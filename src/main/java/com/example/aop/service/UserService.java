@@ -1,7 +1,5 @@
 package com.example.aop.service;
 //目标对象
-public class UserService {
-    public void saveUser() {
-        System.out.println("Saving user...");
-    }
+public interface UserService {
+    void saveUser(String name);
 }
