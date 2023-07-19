@@ -33,4 +33,10 @@ public class UserController {
         System.out.println("the user has been found");
         return "find successfully";
     }
+
+    @RequestMapping("/error")
+    public String errorThrowing(){
+        System.out.println("there is an error" + 10/0);
+        return "error";
+    }
 }
