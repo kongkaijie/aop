@@ -18,7 +18,7 @@ public class AopTestApplication {
         // 创建InvocationHandler
         InvocationHandler handler = new LoggingInvocationHandler(userService);
 
-        // 创建代理对象
+        // 第三步：创建代理对象，调用方法
         UserService proxy = (UserService) Proxy.newProxyInstance(
                 userService.getClass().getClassLoader(),
                 userService.getClass().getInterfaces(),

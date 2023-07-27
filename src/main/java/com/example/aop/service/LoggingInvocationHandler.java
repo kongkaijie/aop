@@ -3,7 +3,7 @@ package com.example.aop.service;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-// InvocationHandler实现
+// 第二步：实现InvocationHandler，并重写invoke方法，通过invoke方法在目标方法前后增强逻辑
 public class LoggingInvocationHandler implements InvocationHandler {
     private final UserService target;
 
