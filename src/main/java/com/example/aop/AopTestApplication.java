@@ -12,20 +12,18 @@ import java.lang.reflect.Method;
 @SpringBootApplication
 public class AopTestApplication {
     public static void main(String[] args) {
-        // 创建目标对象
-        UserService userService = new UserService();
-
-        // 创建Enhancer对象，用于创建代理对象
+        // 第二步：创建Enhancer对象，用于创建代理对象
         Enhancer enhancer = new Enhancer();
+        //第三步：设置目标类为父类，设置回调对象
         enhancer.setSuperclass(UserService.class);
+
+        //第四步：设置回调对象，通过实现`MethodInterceptor`接口并重写`intercept()`方法来实现对目标方法的重写
         enhancer.setCallback(new MethodInterceptor() {
             public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
                 // 在目标方法调用之前执行增强逻辑
                 System.out.println("Before saving user...");
-
                 // 调用目标方法
                 Object result = proxy.invokeSuper(obj, args);
-
                 // 在目标方法调用之后执行增强逻辑
                 System.out.println("After saving user...");
 
@@ -33,7 +31,7 @@ public class AopTestApplication {
             }
         });
 
-        // 创建代理对象
+        // 当调用Enhancer对象的create()方法时，会生成一个继承自目标类的子类
         UserService proxy = (UserService) enhancer.create();
 
         // 调用代理对象的方法
