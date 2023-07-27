@@ -1,5 +1,6 @@
 package com.example.aop.controller;
 
+import com.example.aop.configuration.Logging;
 import com.example.aop.controller.Request.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @RequestMapping("/save")
+    //第三步：在需要增强的方法上明确标注该类型的注解即可，不需要另外对切点进行统一的配置
+    @Logging(value = "save")
     public ResponseEntity<String> saveUser(){
         System.out.println("the user has been saved");
         return ResponseEntity.ok().build();
