@@ -15,12 +15,12 @@ public class AspectConfig {
     public void generatedLog() {
     }
 
-      //指定到某个包下   指定String返回值类型  的所有方法
+      //指定String返回值类型  的所有方法
 //    @Pointcut("execution(String com.example.aop.controller.*.* (..))")
 //    public void generatedLog() {
 //    }
 
-    //指定到某个包下   具有指定参数类型  的所有方法  （int） （int,int）
+    //具有指定参数类型  的所有方法  （int） （int,int）
 //    @Pointcut("execution(* com.example.aop.controller.*.* (com.example.aop.controller.Request.User))")
 //    public void generatedLog() {
 //    }
