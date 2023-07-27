@@ -4,12 +4,13 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
-
+//1.第一步：标记一个类为切面类，并且其中定义的方法可以作为切点和通知进行使用。
 @Aspect
+//将切面类作为一个可被管理的Bean，并能够享受到Spring的自动装配和依赖注入等特性
 @Component
 public class AspectConfig {
 
-      //指定到某个包下  所有  方法
+      //第二步：定义切点：指定到某个包下  所有  方法
     @Pointcut("execution(* com.example.aop.controller.*.* (..))")
     public void generatedLog() {
     }
@@ -30,8 +31,10 @@ public class AspectConfig {
 //    public void generatedLog() {
 //    }
 
+    //第三步：定义通知类型
     @Before("AspectConfig.generatedLog()")
     public void beforeAdvice() {
+        //第四步：定义切入的逻辑
         System.out.println("generate before advice successfully");
     }
 }
