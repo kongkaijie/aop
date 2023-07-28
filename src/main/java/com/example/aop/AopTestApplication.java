@@ -14,7 +14,7 @@ public class AopTestApplication {
     public static void main(String[] args) {
         // 第二步：创建Enhancer对象，用于创建代理对象
         Enhancer enhancer = new Enhancer();
-        //第三步：设置目标类为父类，设置回调对象
+        //第三步：设置目标类为父类
         enhancer.setSuperclass(UserService.class);
 
         //第四步：设置回调对象，通过实现`MethodInterceptor`接口并重写`intercept()`方法来实现对目标方法的重写
